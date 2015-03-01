@@ -3,5 +3,10 @@
     "repository": "VM12/kernel_moto_shamu",
     "target_path": "kernel/moto/shamu",
     "branch":      "vm12"
-  }
+  },
+  {
+    "repository": "TheMuppets/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch":      "cm-12.0"
+  }  
 ]
