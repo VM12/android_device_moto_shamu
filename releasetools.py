@@ -14,28 +14,6 @@
 
 import common
 import struct
-import re
-import os
-
-TARGET_DIR = os.getenv('OUT')
-
-def FullOTA_Assertions(info):
-  AddBootloaderAssertion(info, info.input_zip)
-
-
-def IncrementalOTA_Assertions(info):
-  AddBootloaderAssertion(info, info.target_zip)
-
-
-def AddBootloaderAssertion(info, input_zip):
-  android_info = input_zip.read("OTA/android-info.txt")
-  m = re.search(r"require\s+version-bootloader\s*=\s*(\S+)", android_info)
-  if m:
-    bootloaders = m.group(1).split("|")
-    if "*" not in bootloaders:
-      info.script.AssertSomeBootloader(*bootloaders)
-    info.metadata["pre-bootloader"] = m.group(1)
-
 
 # The target does not support OTA-flashing
 # the partition table, so blacklist it.
